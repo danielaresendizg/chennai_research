@@ -4,13 +4,15 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Severed Accessibility and Urban Resilience</title>
+
   <style>
+    /* === SAME STYLE (fonts, sizes, colors) as your Thermal Inequalities page === */
     body {
       margin: 0;
       padding: 0;
-      background: #000000;
-      color: #fdf8f6;
-      font-family: "Helvetica", "Helvetica", "serif";
+      background: #ffffff;
+      color: #000000;
+      font-family: Helvetica, Arial, serif;
       line-height: 1.6;
     }
 
@@ -25,41 +27,64 @@
       font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 0.05em;
-      color: #e2e0e0;
+      color: #000000;
       text-align: center;
       margin-bottom: 1rem;
     }
 
+    /* Title = code font bold, blue */
     header.hero h1 {
-      font-size: clamp(1.8rem, 4vw, 1.8rem);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: clamp(1.4rem, 4vw, 1.8rem);
       line-height: 1.2;
       font-weight: 800;
       text-align: center;
       margin: 0 0 1rem;
+      color: #0000FF;
+    }
+
+    /* Author = code font bold, blue */
+    .byline {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 1rem;
+      color: #0000FF;
+      text-align: center;
+      margin-bottom: 0.8rem;
+      font-weight: 800;
+    }
+
+    /* Methods = code font regular, blue */
+    .method {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.8rem;
+      color: #0000FF;
+      text-align: center;
+      margin-bottom: 0.8rem;
+      font-weight: 400;
+    }
+
+    /* GitHub link */
+    .drive-link {
+      margin-top: 0.4rem;
+      margin-bottom: 2.6rem;
+      text-align: center;
+    }
+
+    .drive-link a {
+      color: #000000;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid #000000;
+      padding-bottom: 4px;
     }
 
     header.hero p.deck {
       font-size: 1.05rem;
-      color: #e2e1e4;
+      color: #000000;
       text-align: center;
       max-width: 680px;
       margin: 0 auto 2rem;
-    }
-
-    .byline {
-      font-size: 1rem;
-      color: #ffff00;
-      text-align: center;
-      margin-bottom: 3rem;
-      font-weight: 600;
-    }
-
-    .method {
-      font-size: 0.7rem;
-      color: #ffff00;
-      text-align: center;
-      margin-bottom: 3rem;
-      font-weight: 400;
     }
 
     .content p {
@@ -67,6 +92,7 @@
       margin: 1.2rem 0;
       text-align: justify;
       font-weight: 200;
+      color: #000000;
     }
 
     .source p {
@@ -74,15 +100,12 @@
       margin: 1.2rem 0;
       text-align: center;
       font-weight: 200;
+      color: #000000;
     }
 
-    .content strong {
-      font-weight: 700;
-    }
+    .content strong { font-weight: 700; }
 
-    .center {
-      text-align: center;
-    }
+    .center { text-align: center; }
 
     img.responsive {
       max-width: 100%;
@@ -98,29 +121,18 @@
       position: fixed;
       top: 10px;
       right: 10px;
-      background: #222;
-      color: #fff;
-      border: none;
+      background: #ffffff;
+      color: #000000;
+      border: 1px solid #000000;
       padding: 6px 12px;
       cursor: pointer;
       border-radius: 6px;
-    }
-
-    .drive-link {
-      margin-top:40px;
-      text-align:center;
-    }
-
-    .drive-link a {
-      color:#ffff00;
-      font-size:1rem;
-      font-weight:600;
-      text-decoration:none;
-      border-bottom:1px solid #ffff00;
-      padding-bottom:4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-weight: 700;
     }
   </style>
 </head>
+
 <body>
   <button class="toggle-btn" onclick="toggleLang()">EN/ES</button>
 
@@ -130,18 +142,29 @@
     <div id="en" class="lang active">
       <header class="hero">
         <div class="kicker">Risk flood • Mobility • Climate adaptation</div>
+
         <h1>
           Severed Accessibility and Urban Resilience:<br>
           A multi-scalar analysis of flood risk in Chennai, India
         </h1>
+
         <div class="byline">By Daniela Reséndiz</div>
+
         <div class="method">
           Methods: Network analysis, machine learning, geospatial analysis, spatial statistics, hydraulic validation, and field constraints
         </div>
+
+        <div class="drive-link">
+          <a href="https://github.com/danielaresendizg/flood-accessibility-chennai" target="_blank" rel="noopener noreferrer">
+            Link Github's repository
+          </a>
+        </div>
+
         <p class="deck">
           <strong>Flooding is a rapidly intensifying urban challenge,
           disrupting essential services and exposing structural inequalities
-          across cities worldwide.</strong> While existing frameworks address either ecological resilience or spatial configuration, few capture how flood events dynamically alter accessibility—disconnecting populations from shelters, services, or safe mobility routes.
+          across cities worldwide.</strong>
+          While existing frameworks address either ecological resilience or spatial configuration, few capture how flood events dynamically alter accessibility—disconnecting populations from shelters, services, or safe mobility routes.
         </p>
       </header>
 
@@ -161,30 +184,35 @@
 
         <p>By shifting focus from exposure to accessibility, the study offers a novel framework for anticipating the lived impacts of climate hazards—and designing cities that can maintain life-saving accessibility in times of crisis.</p>
       </div>
-
-      <div class="drive-link">
-        <a href="https://github.com/danielaresendizg/flood-accessibility-chennai" target="_blank">
-          Link Github's repository
-        </a>
-      </div>
     </div>
 
     <!-- ================= SPANISH VERSION ================= -->
     <div id="es" class="lang">
       <header class="hero">
         <div class="kicker">Riesgo de inundación • Movilidad • Adaptación climática</div>
+
         <h1>
           Accesibilidad interrumpida y resiliencia urbana:<br>
           Un análisis multi-escalar del riesgo de inundación en Chennai, India
         </h1>
+
         <div class="byline">Por Daniela Reséndiz</div>
+
         <div class="method">
           Métodos: análisis de redes, aprendizaje automático, análisis geoespacial, estadística espacial, validación hidráulica y restricciones de campo
         </div>
+
+        <div class="drive-link">
+          <a href="https://github.com/danielaresendizg/flood-accessibility-chennai" target="_blank" rel="noopener noreferrer">
+            Link repositorio Github
+          </a>
+        </div>
+
         <p class="deck">
           <strong>Las inundaciones son un reto urbano cada vez más intenso,
           interrumpiendo servicios esenciales y revelando desigualdades estructurales
-          en ciudades de todo el mundo.</strong> Aunque los marcos existentes abordan la resiliencia ecológica o la configuración espacial, pocos capturan cómo los eventos de inundación alteran dinámicamente la accesibilidad—desconectando poblaciones de refugios, servicios o rutas de movilidad seguras.
+          en ciudades de todo el mundo.</strong>
+          Aunque los marcos existentes abordan la resiliencia ecológica o la configuración espacial, pocos capturan cómo los eventos de inundación alteran dinámicamente la accesibilidad—desconectando poblaciones de refugios, servicios o rutas de movilidad seguras.
         </p>
       </header>
 
@@ -203,12 +231,6 @@
         <p>El método replantea la resiliencia no como resistencia física a la inundación, sino como la preservación de la conexión espacial ante la disrupción. Es transferible a contextos urbanos diversos y aprovecha datos espaciales y ambientales de acceso abierto, habilitando diagnósticos escalables sin depender de modelado intensivo o insumos propietarios.</p>
 
         <p>Al cambiar el foco de la exposición a la accesibilidad, el estudio ofrece un marco novedoso para anticipar los impactos vividos de los peligros climáticos—y diseñar ciudades que mantengan accesibilidad crítica en tiempos de crisis.</p>
-      </div>
-
-      <div class="drive-link">
-        <a href="https://github.com/danielaresendizg/flood-accessibility-chennai" target="_blank">
-          Link repositorio Github
-        </a>
       </div>
     </div>
 

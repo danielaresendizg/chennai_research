@@ -3,111 +3,231 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Severed Accessibility and Urban Resilience</title>
+  <title>Severed Accessibility and Urban Resilience · Chennai</title>
   <style>
+    * { box-sizing: border-box; }
     body {
       margin: 0; padding: 0;
-      background: #000; color: #fff;
+      background: #fff; color: #1a1a1a;
       font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
       line-height: 1.7;
     }
-    .wrap { max-width: 780px; margin: 0 auto; padding: 40px 20px 80px; }
-    .back { display:inline-block; font-size:.75rem; color:#aaa; text-decoration:none; letter-spacing:.05em; text-transform:uppercase; margin-bottom:32px; }
-    .back:hover { color:#fff; }
-    .kicker { text-transform:uppercase; font-size:0.75rem; font-weight:400; letter-spacing:.08em; color:#aaa; text-align:center; margin-bottom:1rem; }
-    header.hero h1 {
-      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-      font-size: clamp(1.4rem, 4vw, 1.8rem);
-      line-height: 1.2; font-weight: 700; text-align:center;
-      margin: 0 0 1rem; color: #fff;
+
+    /* Layout */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 72px 48px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
     }
-    .byline { font-size:.9rem; color:#aaa; text-align:center; margin-bottom:.6rem; font-weight:400; }
-    .method { font-size:0.75rem; color:#aaa; text-align:center; margin-bottom:.8rem; }
-    .drive-link { margin:.4rem 0 2.6rem; text-align:center; }
-    .drive-link a { color:#00fff9; font-size:.9rem; text-decoration:underline; text-underline-offset:3px; }
-    .drive-link a:hover { opacity:.7; }
-    header.hero p.deck { font-size:1rem; color:#fff; text-align:center; max-width:680px; margin:0 auto 2rem; }
-    .content p { font-size:.95rem; margin:1.2rem 0; text-align:justify; font-weight:300; color:#ddd; }
-    .content strong { font-weight:400; color:#fff; }
-    .source p { font-size:0.6rem; margin:.8rem 0; text-align:center; font-weight:300; color:#666; }
-    .center { text-align:center; }
-    img.responsive { max-width:100%; height:auto; display:block; margin:0 auto; }
-    .lang { display:none; }
-    .lang.active { display:block; }
+
+    .col-text {
+      position: sticky;
+      top: 72px;
+    }
+
+    .col-image {
+      display: flex;
+      flex-direction: column;
+    }
+    .col-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .img-caption {
+      font-family: 'Inconsolata', monospace;
+      font-size: .62rem;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+    .img-links {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .img-links a {
+      font-family: 'Inconsolata', monospace;
+      font-size: .65rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+    .img-links a:hover { color: #00FF00; }
+
+    /* Texto */
+    .kicker {
+      font-family: 'Inconsolata', monospace;
+      text-transform: uppercase; font-size: 0.65rem;
+      letter-spacing: .08em; color: #888;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      line-height: 1.3; font-weight: 400;
+      margin: 0 0 1.4rem; color: #1a1a1a;
+    }
+    .content p {
+      font-size: .78rem; margin: 1rem 0;
+      color: #1a1a1a; font-weight: 300;
+      line-height: 1.7;
+    }
+    .content strong { font-weight: 500; }
+
+    /* Awards */
+    .award-chips {
+      margin-top: 20px;
+      padding-left: 10px;
+      border-left: 2px solid #00FF00;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .award-chip {
+      font-family: 'Inconsolata', monospace;
+      font-size: .58rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #555;
+      line-height: 1.6;
+      transition: color .15s;
+    }
+    .award-chip:hover { color: #00FF00; }
+
+    /* Toggle */
     .toggle-btn {
-      position:fixed; top:12px; right:12px;
-      background:transparent; color:#aaa;
-      border:1px solid #aaa; padding:5px 10px;
-      cursor:pointer; font-family:inherit; font-size:.75rem;
-      letter-spacing:.05em;
+      position: fixed; top: 16px; right: 16px;
+      background: #00FF00; color: #000; border: none;
+      padding: 5px 12px; cursor: pointer;
+      font-family: 'Inconsolata', monospace;
+      font-size: .58rem; font-weight: 400;
+      letter-spacing: .06em; text-transform: uppercase;
+      z-index: 100;
     }
-    .toggle-btn:hover { color:#fff; border-color:#fff; }
-    @media (max-width:600px) { .wrap { padding: 24px 16px 60px; } }
+    .toggle-btn:hover { opacity: .8; }
+
+    .lang { display: none; }
+    .lang.active { display: contents; }
+
+    /* Back chip */
+    #back-chip {
+      position: fixed; top: 16px; left: 16px; z-index: 9999;
+      display: none; background: #00FF00; color: #000;
+      font-family: 'Inconsolata', monospace;
+      font-size: .58rem; font-weight: 400;
+      text-transform: uppercase; letter-spacing: .06em;
+      padding: 5px 12px; text-decoration: none;
+    }
+    #back-chip:hover { opacity: .8; }
+
+    .mobile-links { display: none; }
+    @media (max-width: 768px) {
+      .page {
+        grid-template-columns: 1fr;
+        padding: 56px 20px 60px;
+        gap: 0;
+      }
+      .col-text { position: static; order: 2; padding: 24px 0 0; }
+      .col-image { order: 1; }
+      .col-image img { height: 50vw; object-fit: cover; }
+      .col-image .img-links { display: none; }
+      .mobile-links { display: flex; flex-direction: column; gap: 8px; margin-top: 24px; order: 3; }
+      h1 { font-size: 1.1rem; }
+      .content p { font-size: .82rem; }
+    }
   </style>
 </head>
 <body>
-  <button class="toggle-btn" onclick="toggleLang()">EN/ES</button>
+  <button class="toggle-btn" id="toggle-btn" onclick="toggleLang()">ES</button>
+  <a id="back-chip" href="#"></a>
 
-  <div class="wrap">
-
-    <a class="back" href="https://danielaresendizg.github.io/en/projects.html">← Projects</a>
+  <div class="page">
 
     <!-- ENGLISH -->
     <div id="en" class="lang active">
-      <header class="hero">
+      <div class="col-text">
         <div class="kicker">Flood risk · Mobility · Climate adaptation</div>
-        <h1>Severed Accessibility and Urban Resilience:<br>A multi-scalar analysis of flood risk in Chennai, India</h1>
-        <div class="byline">By Daniela Reséndiz</div>
-        <div class="method">Methods: Network analysis, machine learning, geospatial analysis, spatial statistics, hydraulic validation, and field constraints</div>
-        <div class="drive-link">
-          <a href="https://github.com/danielaresendizg/flood-accessibility-chennai" target="_blank" rel="noopener noreferrer">GitHub repository →</a>
+        <h1>Severed Accessibility and Urban Resilience: A multi-scalar analysis of flood risk in Chennai, India</h1>
+        <div class="content">
+          <p><strong>Keywords:</strong> Network analysis, machine learning, geospatial analysis, spatial statistics, hydraulic validation</p>
+          <p>Flooding is a rapidly intensifying urban challenge, disrupting essential services and exposing structural inequalities across cities worldwide. While existing frameworks address either ecological resilience or spatial configuration, few capture how flood events dynamically alter accessibility — disconnecting populations from shelters, services, or safe mobility routes.</p>
+          <p>This study introduces a spatial methodology that models accessibility loss under extreme flood conditions, integrating a 100-year return period scenario with network-based spatial analysis. Applied to Chennai, the approach overlays flood impact on road networks, land use, and infrastructure to assess where functional accessibility collapses. A clustering analysis further identifies priority zones for safe shelter allocation and evacuation planning.</p>
+          <p>Results show that accessibility degradation is spatially uneven. Compact urban forms retain greater connectivity under stress, while dispersed or fragmented areas become structurally isolated. Key corridors and intervention areas are mapped at both local and metropolitan scales, offering actionable entry points for adaptive planning.</p>
+          <p>By shifting focus from exposure to accessibility, the study offers a novel framework for anticipating the lived impacts of climate hazards — and designing cities that can maintain life-saving connectivity in times of crisis.</p>
         </div>
-        <p class="deck"><strong>Flooding is a rapidly intensifying urban challenge, disrupting essential services and exposing structural inequalities across cities worldwide.</strong> While existing frameworks address either ecological resilience or spatial configuration, few capture how flood events dynamically alter accessibility—disconnecting populations from shelters, services, or safe mobility routes.</p>
-      </header>
-      <div class="center">
-        <img class="responsive" src="01.chennai.webp" alt="Flood map Chennai" width="80%">
-        <div class="source"><p>Flood waters swill around apartment blocks in Chennai on 18 November 2015. Photograph: STR/AFP/Getty. <em>Source: The Guardian</em></p></div>
+        <div class="award-chips">
+          <span class="award-chip">Distinction · MSc Space Syntax, The Bartlett UCL</span>
+        </div>
       </div>
-      <div class="content">
-        <p>This study introduces a spatial methodology that models accessibility loss under extreme flood conditions, integrating a 100-year return period scenario with network-based spatial analysis. Applied to Chennai, the approach overlays flood impact on road networks, land use, and infrastructure to assess where functional accessibility collapses. A clustering analysis further identifies priority zones for safe shelter allocation and evacuation planning.</p>
-        <p>Results show that accessibility degradation is spatially uneven. Compact urban forms retain greater connectivity under stress, while dispersed or fragmented areas become structurally isolated. Key corridors and intervention areas are mapped both at local and metropolitan scales, offering actionable entry points for adaptive planning.</p>
-        <p>The method reframes resilience not as physical resistance to flooding, but as the preservation of spatial connection under disruption. It is transferable to diverse urban contexts and leverages open-access spatial and environmental data, enabling scalable diagnostics without relying on intensive modelling or proprietary inputs.</p>
-        <p>By shifting focus from exposure to accessibility, the study offers a novel framework for anticipating the lived impacts of climate hazards—and designing cities that can maintain life-saving accessibility in times of crisis.</p>
+      <div class="col-image">
+        <img src="01.chennai.webp" alt="Flood waters in Chennai, 2015">
+        <div class="img-caption">Flood waters in Chennai, November 2015. Photo: STR/AFP/Getty · The Guardian.</div>
+        <div class="img-links">
+          <a href="https://github.com/danielaresendizg/flood-accessibility-chennai" target="_blank">→ GitHub repository</a>
+        </div>
+      </div>
+      <div class="mobile-links img-links">
+        <a href="https://github.com/danielaresendizg/flood-accessibility-chennai" target="_blank">→ GitHub repository</a>
       </div>
     </div>
 
     <!-- SPANISH -->
     <div id="es" class="lang">
-      <header class="hero">
+      <div class="col-text">
         <div class="kicker">Riesgo de inundación · Movilidad · Adaptación climática</div>
-        <h1>Accesibilidad interrumpida y resiliencia urbana:<br>Un análisis multi-escalar del riesgo de inundación en Chennai, India</h1>
-        <div class="byline">Por Daniela Reséndiz</div>
-        <div class="method">Métodos: análisis de redes, aprendizaje automático, análisis geoespacial, estadística espacial, validación hidráulica y restricciones de campo</div>
-        <div class="drive-link">
-          <a href="https://github.com/danielaresendizg/flood-accessibility-chennai" target="_blank" rel="noopener noreferrer">Repositorio GitHub →</a>
+        <h1>Accesibilidad interrumpida y resiliencia urbana: Un análisis multi-escalar del riesgo de inundación en Chennai, India</h1>
+        <div class="content">
+          <p><strong>Palabras clave:</strong> Análisis de redes, aprendizaje automático, análisis geoespacial, estadística espacial, validación hidráulica</p>
+          <p>Las inundaciones son un reto urbano cada vez más intenso, interrumpiendo servicios esenciales y revelando desigualdades estructurales en ciudades de todo el mundo. Aunque los marcos existentes abordan la resiliencia ecológica o la configuración espacial, pocos capturan cómo los eventos de inundación alteran dinámicamente la accesibilidad.</p>
+          <p>Este estudio introduce una metodología espacial que modela la pérdida de accesibilidad bajo condiciones extremas de inundación, integrando un escenario de periodo de retorno de 100 años con análisis espacial basado en redes. Aplicado a Chennai, el enfoque superpone el impacto de la inundación sobre la red vial, el uso de suelo y la infraestructura para evaluar dónde colapsa la accesibilidad funcional. Un análisis de clustering identifica zonas prioritarias para la asignación de refugios y la planificación de evacuación.</p>
+          <p>Los resultados muestran que la degradación de la accesibilidad es espacialmente desigual. Las formas urbanas compactas retienen mayor conectividad bajo estrés, mientras que áreas dispersas o fragmentadas se aíslan estructuralmente.</p>
+          <p>Al cambiar el foco de la exposición a la accesibilidad, el estudio ofrece un marco novedoso para anticipar los impactos vividos de los peligros climáticos y diseñar ciudades que mantengan la conectividad en tiempos de crisis.</p>
         </div>
-        <p class="deck"><strong>Las inundaciones son un reto urbano cada vez más intenso, interrumpiendo servicios esenciales y revelando desigualdades estructurales en ciudades de todo el mundo.</strong> Aunque los marcos existentes abordan la resiliencia ecológica o la configuración espacial, pocos capturan cómo los eventos de inundación alteran dinámicamente la accesibilidad.</p>
-      </header>
-      <div class="center">
-        <img class="responsive" src="01.chennai.webp" alt="Mapa de inundación Chennai" width="80%">
-        <div class="source"><p>El agua de la inundación rodea bloques de apartamentos en Chennai el 18 de noviembre de 2015. Fotografía: STR/AFP/Getty. <em>Fuente: The Guardian</em></p></div>
+        <div class="award-chips">
+          <span class="award-chip">Distinction · MSc Space Syntax, The Bartlett UCL</span>
+        </div>
       </div>
-      <div class="content">
-        <p>Este estudio introduce una metodología espacial que modela la pérdida de accesibilidad bajo condiciones extremas de inundación, integrando un escenario de periodo de retorno de 100 años con análisis espacial basado en redes. Aplicado a Chennai, el enfoque superpone el impacto de la inundación sobre la red vial, el uso de suelo y la infraestructura para evaluar dónde colapsa la accesibilidad funcional.</p>
-        <p>Los resultados muestran que la degradación de la accesibilidad es espacialmente desigual. Las formas urbanas compactas retienen mayor conectividad bajo estrés, mientras que áreas dispersas o fragmentadas se aíslan estructuralmente.</p>
-        <p>El método replantea la resiliencia no como resistencia física a la inundación, sino como la preservación de la conexión espacial ante la disrupción. Es transferible a contextos urbanos diversos y aprovecha datos de acceso abierto, habilitando diagnósticos escalables.</p>
-        <p>Al cambiar el foco de la exposición a la accesibilidad, el estudio ofrece un marco novedoso para anticipar los impactos vividos de los peligros climáticos.</p>
+      <div class="col-image">
+        <img src="01.chennai.webp" alt="Inundación en Chennai, 2015">
+        <div class="img-caption">Inundación en Chennai, noviembre 2015. Foto: STR/AFP/Getty · The Guardian.</div>
+        <div class="img-links">
+          <a href="https://github.com/danielaresendizg/flood-accessibility-chennai" target="_blank">→ Repositorio GitHub</a>
+        </div>
+      </div>
+      <div class="mobile-links img-links">
+        <a href="https://github.com/danielaresendizg/flood-accessibility-chennai" target="_blank">→ Repositorio GitHub</a>
       </div>
     </div>
 
   </div>
 
   <script>
+    var currentLang = "en";
     function toggleLang(){
       document.getElementById("en").classList.toggle("active");
       document.getElementById("es").classList.toggle("active");
+      currentLang = currentLang === "en" ? "es" : "en";
+      document.getElementById("toggle-btn").textContent = currentLang === "en" ? "ES" : "EN";
     }
+    (function(){
+      var p = new URLSearchParams(location.search);
+      if(p.get("ref")==="portfolio"){
+        var c = document.getElementById("back-chip");
+        var lang = p.get("lang");
+        c.textContent = lang==="es" ? "← Proyectos" : "← Projects";
+        c.href = lang==="es" ? "https://danielaresendizg.github.io/es/projects.html" : "https://danielaresendizg.github.io/en/projects.html";
+        c.style.display = "block";
+      }
+    })();
   </script>
-<style>#back-chip{position:fixed;top:16px;left:16px;z-index:9999;display:none;background:#00FF00;color:#000;font-family:"Inconsolata",monospace;font-size:.58rem;font-weight:400;text-transform:uppercase;letter-spacing:.06em;padding:5px 12px;text-decoration:none;cursor:pointer;}#back-chip:hover{opacity:.8;}</style><a id="back-chip" href="#"></a><script>(function(){var p=new URLSearchParams(location.search);if(p.get("ref")==="portfolio"){var c=document.getElementById("back-chip");var lang=p.get("lang");c.textContent=lang==="es"?"← Proyectos":"← Projects";c.href=lang==="es"?"https://danielaresendizg.github.io/es/projects.html":"https://danielaresendizg.github.io/en/projects.html";c.style.display="block";}})();</script>
 </body>
 </html>
